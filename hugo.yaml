@@ -1,0 +1,268 @@
+# 如果你的站点使用 'https'，请确保 baseURL 也使用 'https'，
+# 否则生成的 sitemap 中会包含 http 链接，影响 Google 对你网站的索引。
+# 【必改】将此处替换为你自己的网站地址
+baseURL: "https://blog.w1ndys.top/"
+
+# 【必改】网站标题，显示在浏览器标签页和页面顶部
+title: 卷卷的小屋
+
+# 页脚版权信息，支持 Markdown 语法
+copyright: "© [W1ndys](https://github.com/W1ndys)"
+
+# 使用的主题名称，需与 themes/ 目录下的文件夹名一致
+# 如果使用 git submodule 安装主题，文件夹名通常为 hugo-PaperMod
+# 也可以写成 theme: hugo-PaperMod（不用数组形式）
+theme: [hugo-PaperMod]
+
+# 允许在 Markdown 中使用内联 shortcode
+enableInlineShortcodes: true
+
+# 自动生成 robots.txt 文件，有利于 SEO
+enableRobotsTXT: true
+
+# 是否构建草稿/未来日期/已过期的文章（通常保持 false）
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+# 启用 Emoji 表情支持，可在 Markdown 中使用 :emoji_name: 语法
+enableEmoji: true
+
+# 代码高亮使用 CSS class 而非内联样式（配合 highlight 配置使用）
+pygmentsUseClasses: true
+
+# 主要内容目录，Hugo 会将这些目录下的文章作为"主要文章"展示在首页
+# 【按需修改】改为你实际使用的内容目录名
+mainsections: ["posts", "papermod"]
+
+# HTML 压缩配置
+minify:
+  # 禁用 XML 文件压缩（RSS 等）
+  disableXML: true
+  # 启用全站输出压缩（取消注释可减小页面体积）
+  minifyOutput: true
+
+# 分页配置
+pagination:
+  disableAliases: false
+  # 每页显示的文章数量，【按需修改】
+  pagerSize: 3
+
+# ============================================================
+# 语言配置（单语言：中文）
+# 如需多语言，可参考 Hugo 文档添加其他语言块
+# ============================================================
+languages:
+  zh:
+    languageName: "中文"
+    weight: 1
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+    # 导航菜单配置，weight 越小排越前
+    menu:
+      main:
+        - name: 归档
+          url: archives
+          weight: 5
+        - name: 搜索
+          url: search/
+          weight: 10
+        - name: 标签
+          url: tags/
+          weight: 10
+
+# ============================================================
+# 自定义输出格式
+# 此处定义了 llms 格式，用于生成纯文本版本供 LLM 抓取
+# ============================================================
+outputFormats:
+  llms:
+    mediaType: "text/plain"
+    baseName: "llms"
+    isPlainText: true
+    notAlternative: true
+
+# 首页输出格式：HTML 页面 + RSS 订阅 + JSON（搜索用）+ llms
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+    - llms
+
+# ============================================================
+# 全局参数配置（params）
+# ============================================================
+params:
+  # 设为 production 可启用 Google Analytics、OpenGraph、Twitter Cards 和 Schema 结构化数据
+  env: production
+
+  # 【必改】网站描述，用于 SEO 和社交分享
+  description: "卷卷的小屋 - https://github.com/W1ndys"
+
+  # 【必改】作者名称，显示在文章页面
+  author: W1ndys
+  # 多作者写法：
+  # author: ["作者1", "作者2"]
+
+  # 默认主题：auto（跟随系统）、light（浅色）、dark（深色）
+  defaultTheme: auto
+  # 禁用主题切换按钮（取消注释后用户无法手动切换深浅色）
+  # disableThemeToggle: true
+
+  # 显示分享按钮（Twitter、Facebook 等）
+  ShowShareButtons: true
+  # 显示预计阅读时间
+  ShowReadingTime: true
+  # 禁用首篇文章的特殊样式（取消注释生效）
+  # disableSpecial1stPost: true
+  # 显示完整语言名称（而非语言代码）
+  displayFullLangName: true
+  # 显示上一篇/下一篇导航链接
+  ShowPostNavLinks: true
+  # 显示面包屑导航
+  ShowBreadCrumbs: true
+  # 代码块显示复制按钮
+  ShowCodeCopyButtons: true
+  # 在分类/标签列表页显示 RSS 按钮
+  ShowRssButtonInSectionTermList: true
+  # 归档页显示所有页面
+  ShowAllPagesInArchive: true
+  # 显示页码
+  ShowPageNums: true
+  # 显示文章目录（Table of Contents）
+  ShowToc: true
+  # 启用评论功能（需配合评论系统如 Disqus、Giscus 等）
+  # comments: false
+
+  # 默认社交分享图片（当文章没有设置 cover 时使用）
+  images: ["images/papermod-cover.png"]
+
+  # 个人主页模式（全局配置，也可在语言级别单独配置）
+  # 启用后首页显示个人简介+按钮，而非文章列表
+  profileMode:
+    enabled: true
+    title: W1ndys
+    imageUrl: "#"
+    imageTitle: my image
+    # imageWidth: 120
+    # imageHeight: 120
+    buttons:
+      - name: Archives
+        url: archives
+      - name: Tags
+        url: tags
+
+  # 首页信息栏配置（profileMode 关闭时生效）
+  homeInfoParams:
+    Title: "W1ndys"
+    Content: >
+      👋 Welcome to my blog
+  
+  # 社交图标配置，显示在页脚或个人主页
+  # 支持的图标列表见：https://github.com/adityatelange/hugo-PaperMod/wiki/Icons
+  socialIcons:
+    - name: github
+      title: View Source on Github
+      url: "https://github.com/W1ndys"
+
+
+  # "建议修改"链接配置，显示在每篇文章底部
+  editPost:
+    # 【必改】替换为你的 GitHub 仓库内容目录地址
+    URL: "https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content"
+    Text: "Suggest Changes"  # 按钮文字
+    appendFilePath: true      # 自动追加文件路径到链接末尾
+
+  # 网站 Logo / 标签配置
+  # label:
+  #   iconSVG: '<svg>...</svg>'  # 自定义 SVG 图标
+  #   text: "Home"               # 显示文字
+  #   icon: icon.png             # 图标文件路径
+  #   iconHeight: 35             # 图标高度
+
+  # Google Analytics 配置
+  # analytics:
+  #   google:
+  #     SiteVerificationTag: "XYZabc"  # Google Search Console 验证码
+
+  # 静态资源配置
+  assets:
+    # 禁用内置的 highlight.js（使用 Hugo 自带的 Chroma 高亮时设为 true）
+    disableHLJS: true
+    # 自定义 favicon 图标（取消注释并填入路径）
+    # favicon: "<link / abs url>"
+    # favicon16x16: "<link / abs url>"
+    # favicon32x32: "<link / abs url>"
+    # apple_touch_icon: "<link / abs url>"
+    # safari_pinned_tab: "<link / abs url>"
+
+  # 封面图片配置
+  # cover:
+  #   hidden: true          # 全局隐藏封面图（结构化数据中仍保留）
+  #   hiddenInList: true     # 仅在列表页隐藏
+  #   hiddenInSingle: true   # 仅在文章页隐藏
+
+  # 搜索配置（基于 Fuse.js 模糊搜索）
+  # fuseOpts:
+  #   isCaseSensitive: false    # 是否区分大小写
+  #   shouldSort: true           # 结果是否排序
+  #   location: 0                # 匹配位置
+  #   distance: 1000             # 搜索距离（越大越模糊）
+  #   threshold: 0.4             # 匹配阈值（0=精确，1=匹配所有）
+  #   minMatchCharLength: 0      # 最小匹配字符数
+  #   keys: ["title", "permalink", "summary", "content"]  # 搜索字段
+
+# ============================================================
+# Markdown 渲染配置
+# ============================================================
+markup:
+  goldmark:
+    renderer:
+      # 允许在 Markdown 中使用原始 HTML（如 <iframe>、<video> 等）
+      # 注意：启用此选项有 XSS 风险，仅在你信任所有内容作者时开启
+      unsafe: true
+  highlight:
+    # 代码高亮使用 CSS class（配合自定义主题样式）
+    noClasses: false
+    # 以下为可选的代码高亮配置：
+    # anchorLineNos: true   # 行号可点击锚定
+    # codeFences: true       # 启用代码围栏（```）
+    # guessSyntax: true      # 自动猜测语言
+    # lineNos: true          # 显示行号
+    # style: monokai         # 高亮主题（如 monokai、dracula、github 等）
+
+# ============================================================
+# 隐私配置（GDPR 合规相关）
+# 取消注释以启用对第三方服务的隐私保护
+# ============================================================
+# privacy:
+#   vimeo:
+#     disabled: false
+#     simple: true       # 使用无追踪的嵌入模式
+#
+#   twitter:
+#     disabled: false
+#     enableDNT: true    # 启用"请勿追踪"
+#     simple: true
+#
+#   instagram:
+#     disabled: false
+#     simple: true
+#
+#   youtube:
+#     disabled: false
+#     privacyEnhanced: true  # 使用 youtube-nocookie.com 域名
+
+# ============================================================
+# 第三方服务配置
+# ============================================================
+services:
+  instagram:
+    # 禁用 Instagram 嵌入的内联 CSS
+    disableInlineCSS: true
+  x:
+    # 禁用 X/Twitter 嵌入的内联 CSS
+    disableInlineCSS: true
