@@ -1,6 +1,6 @@
 {
   "framework": "hugo",
-  "buildCommand": "hugo --minify --gc",
+  "buildCommand": "git submodule update --init --recursive && hugo --minify --gc",
   "outputDirectory": "public",
   "build": {
     "env": {
